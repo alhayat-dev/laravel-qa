@@ -13,7 +13,7 @@ class QuestionsController extends Controller
 
     /**
      *  Display all the questions
-     * 
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()

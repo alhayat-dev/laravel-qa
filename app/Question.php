@@ -34,7 +34,7 @@ class Question extends Model
      * @return string
      */
     public function getUrlAttribute(){
-        return route("questions.show", $this->id);
+        return route("questions.show", $this->slug);
     }
 
     /**
@@ -44,6 +44,9 @@ class Question extends Model
         return $this->created_at->diffForHumans();
     }
 
+    /**
+     * @return string
+     */
     public function getStatusAttribute(){
         if ($this->answers > 0){
             if ($this->best_answer_id){

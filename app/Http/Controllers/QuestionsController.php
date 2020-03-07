@@ -49,12 +49,13 @@ class QuestionsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Question  $question
-     * @return \Illuminate\Http\Response
+     * @param Question $question
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Question $question)
     {
-        //
+        $question->increment('views');
+        return view('questions.show', compact('question'));
     }
 
     /**

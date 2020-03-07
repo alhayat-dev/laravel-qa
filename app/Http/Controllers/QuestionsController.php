@@ -10,16 +10,15 @@ use Illuminate\Support\Facades\DB;
 
 class QuestionsController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     *  Display all the questions
+     * 
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-//        $questions = Question::paginate()
-        $questions = DB::table('questions')->paginate(5);
-
+        $questions = Question::with('user')->latest()->paginate(5);
         return view('questions.index', compact('questions'));
     }
 

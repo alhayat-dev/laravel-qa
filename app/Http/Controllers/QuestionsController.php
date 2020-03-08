@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Gate;
 
 class QuestionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['index', 'show']);
+    }
 
     /**
      *  Display all the questions
@@ -78,12 +82,14 @@ class QuestionsController extends Controller
      * @param AskQuestionRequest $request
      * @param Question $question
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(AskQuestionRequest $request, Question $question)
     {
-        if (Gate::denies('update-question', $question)){
-            abort(403, 'Access Denied');
-        }
+//        if (Gate::denies('update-question', $question)){
+//            abort(403, 'Access Denied');
+//        }
+        $this->authorize('update', $question);
         $question->update($request->only('title', 'body'));
         return redirect('/questions')->with('success', 'Your question has been updated.');
     }
@@ -97,9 +103,10 @@ class QuestionsController extends Controller
      */
     public function destroy(Question $question)
     {
-        if (Gate::denies('update-question', $question)){
-            abort(403, 'Access Denied');
-        }
+        $this->authorize('delete', $question);
+//        if (Gate::denies('update-question', $question)){
+//            abort(403, 'Access Denied');
+//        }
         $question->delete();
         return redirect('/questions')->with('success', 'Your question has been deleted.');
     }

@@ -50,55 +50,11 @@
             </div>
         </div>
 
-        
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-
-                        <div class="card-title">
-                            <h2><?php echo e($question->answers_count . " ". \Illuminate\Support\Str::plural('Answer', $question->answers_count)); ?></h2>
-                        </div>
-                        <hr>
-                        <?php $__currentLoopData = $question->answers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $answer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="media">
-
-                                <div class="d-flex flex-column vote-controls">
-                                    <a title="This answer is useful">
-                                        <i class="fas fa-caret-up fa-3x"></i>
-                                    </a>
-                                    <span class="votes-count">124</span>
-                                    <a title="This answer is not useful">
-                                        <i class="fas fa-caret-down fa-3x"></i>
-                                    </a>
-                                    <a title="Mark this answer as best answer" class="vote-accepted mt-2">
-                                        <i class="fas fa-check fa-2x"></i>
-                                    </a>
-                                </div>
-
-                                <div class="media-body">
-                                    <?php echo e($answer->body); ?>
-
-                                    <div class="float-right mt-2">
-                                        <span class="text-muted">Answered <?php echo e($answer->created_date); ?></span>
-                                        <div class="media mt-2">
-                                            <a href="<?php echo e($answer->user->url); ?>" class="pr-2">
-                                                <img src="<?php echo e($answer->user->avatar); ?>" alt="" style="width: 32px; height: 32px;">
-                                            </a>
-                                            <div class="media-body mt-1">
-                                                <a href="<?php echo e($answer->user->url); ?>"><?php echo e($answer->user->name); ?></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php echo $__env->make('answers._index',[
+            'answers' => $question->answers,
+            'answersCount' => $question->answers_count
+        ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php echo $__env->make('answers._create', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
 <?php $__env->stopSection(); ?>
 

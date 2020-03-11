@@ -16,13 +16,29 @@
                             <a title="This answer is useful">
                                 <i class="fas fa-caret-up fa-3x"></i>
                             </a>
-                            <span class="votes-count">124</span>
+                            <span class="votes-count"><?php echo e($answer->question->votes); ?></span>
                             <a title="This answer is not useful">
                                 <i class="fas fa-caret-down fa-3x"></i>
                             </a>
-                            <a title="Mark this answer as best answer" class="<?php echo e($answer->status); ?> mt-2">
-                                <i class="fas fa-check fa-2x"></i>
-                            </a>
+
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('accept', $answer)): ?>
+                                <a title="Mark this answer as best answer"
+                                   class="<?php echo e($answer->status); ?> mt-2"
+                                   onclick="event.preventDefault(); document.getElementById('accept-answer-<?php echo e($answer->id); ?>').submit();">
+                                    <i class="fas fa-check fa-2x"></i>
+
+                                    <form action="<?php echo e(route('answers.accept', $answer->id)); ?>" method="POST" id="accept-answer-<?php echo e($answer->id); ?>" style="display: none">
+                                        <?php echo csrf_field(); ?>
+                                    </form>
+                                </a>
+                            <?php else: ?>
+                                <?php if($answer->is_best): ?>
+                                    <a title="Mark this answer as best answer" class="<?php echo e($answer->status); ?> mt-2">
+                                        <i class="fas fa-check fa-2x"></i>
+                                    </a>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
                         </div>
 
                         <div class="media-body">

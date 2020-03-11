@@ -2,9 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f23c7ebd-a902-4223-8f1d-07255efd9602" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_03_11_023305_add_foreign_best_answer_id_to_questions_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AcceptAnswersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Answer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Answer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Policies/AnswerPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/AnswerPolicy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Question.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_11_023305_add_foreign_best_answer_id_to_questions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_03_11_023305_add_foreign_best_answer_id_to_questions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/answers/_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/answers/_index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/debugbar/X2867c2bece54e9fbf3318d042c52b7b6.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/debugbar/X2867c2bece54e9fbf3318d042c52b7b6.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/debugbar/X35efc0c3e70071806d402182fc806dc9.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/debugbar/X35efc0c3e70071806d402182fc806dc9.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/debugbar/X3f096b07fda4ddb4ec52bf3478acb1d3.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/debugbar/X3f096b07fda4ddb4ec52bf3478acb1d3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/debugbar/X4a9aefe9e27feb429661d3ba1573f286.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/debugbar/X4a9aefe9e27feb429661d3ba1573f286.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/debugbar/X5345438572c1a81cf646bb490b32455b.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/debugbar/X5345438572c1a81cf646bb490b32455b.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/debugbar/X5baf42ce990e6211e097b7f384708fbb.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/debugbar/X5baf42ce990e6211e097b7f384708fbb.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/debugbar/X83eb31749f4e5e4e5cdca8ab9df53483.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/debugbar/X83eb31749f4e5e4e5cdca8ab9df53483.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/debugbar/X90a2ee8022c2292b932bb50607c939ed.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/debugbar/X90a2ee8022c2292b932bb50607c939ed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/debugbar/X96b4fa0d9f9325cd8b4fa46def6bd63c.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/debugbar/X96b4fa0d9f9325cd8b4fa46def6bd63c.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/debugbar/Xad37824ac7fa7396fd3dfa7b3c4e992b.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/debugbar/Xad37824ac7fa7396fd3dfa7b3c4e992b.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/debugbar/Xc6fa82a4e8d96331c450a503507aaf17.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/debugbar/Xc6fa82a4e8d96331c450a503507aaf17.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/debugbar/Xd24f039f01ca397b615dd3ba1dc0812a.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/debugbar/Xd24f039f01ca397b615dd3ba1dc0812a.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/EwHabhroj05xb4XF9Plou5YaOHQdaAjgqZYziss4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/ig2kGKVNMdKtjQenqc4n2cGyCBqpDjJ14BFxxluH" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/b9d754ad18467f3a52d363a4d7972f9a9447c95c.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/b9d754ad18467f3a52d363a4d7972f9a9447c95c.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +180,7 @@
       <option name="presentableId" value="Default" />
       <updated>1583438586667</updated>
       <workItem from="1583438589032" duration="4388000" />
-      <workItem from="1583768118038" duration="8609000" />
+      <workItem from="1583768118038" duration="12422000" />
     </task>
     <servers />
   </component>

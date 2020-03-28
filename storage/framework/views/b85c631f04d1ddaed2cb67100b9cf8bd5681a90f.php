@@ -23,10 +23,21 @@
                                 <a title="This question is not useful">
                                     <i class="fas fa-caret-down fa-3x"></i>
                                 </a>
-                                <a title="Click to mark as favourite question (Click again to undo)" class="favourite mt-2 favourited">
+
+                                <a title="Click to mark as favorite question (Click again to undo)"
+                                   class="favourite mt-2 <?php echo e(Auth::guest() ? 'off' : ($question->is_favourited ? 'favourited' : '')); ?>"
+                                   onclick="event.preventDefault(); document.getElementById('favourite-question-<?php echo e($question->id); ?>').submit();"
+                                >
+
                                     <i class="fas fa-star fa-2x"></i>
-                                    <span class="favourite-count">1234</span>
+                                    <span class="favourite-count"><?php echo e($question->favourite_count); ?></span>
                                 </a>
+                                <form id="favourite-question-<?php echo e($question->id); ?>" action="/questions/<?php echo e($question->id); ?>/favourites" method="POST" style="display:none;">
+                                    <?php echo csrf_field(); ?>
+                                    <?php if($question->is_favourited): ?>
+                                        <?php echo method_field('DELETE'); ?>
+                                    <?php endif; ?>
+                                </form>
                             </div>
 
                             <div class="media-body">

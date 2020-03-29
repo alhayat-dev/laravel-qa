@@ -11,17 +11,34 @@
 
                 @foreach($answers as $answer)
                     <div class="media">
- ad libero aut sequi error. Earum autem nulla est aut. Assumenda optio et similique ex non. In omnis iusto qui nisi consequatur quisquam. Expedita illum repellat quisquam vel voluptatem. Nihil suscipit consequatur et eum sint. Rerum veritatis sit placeat enim aut sed rerum rerum. Debitis error dolores non accusamus. Odio quo neque et est voluptatem. Cumque quia tempora rerum quod. Omnis rerum qui corporis eos. Et sed repellat aliquid doloribus. Mollitia optio reiciendis nam eos quis ut. At error eum harum maxime eius quod. Natus aliquid reiciendis quo voluptas occaecati deserunt. Hic nesciunt laudantium quos.
+
                         <div class="d-flex flex-column vote-controls">
-                            <a title="This answer is useful">
+                            <a title="This answer is useful"
+                               class="vote-up {{ Auth::guest() ? 'off' : '' }}"
+                               onclick="event.preventDefault(); document.getElementById('up-vote-answer-{{$answer->id}}').submit();">
                                 <i class="fas fa-caret-up fa-3x"></i>
                             </a>
-                            <span class="votes-count">{{ $answer->question->votes_count }}</span>
-                            <a title="This answer is not useful">
+
+                            <form id="up-vote-answer-{{$answer->id}}" action="/answers/{{ $answer->id }}/vote" method="POST" style="display:none;">
+                                @csrf
+                                <input type="hidden" name="vote" value="1">
+                            </form>
+
+                            <span class="votes-count">{{ $answer->votes_count }}</span>
+
+                            <a title="This answer is not useful"
+                               class="vote-down {{ Auth::guest() ? 'off' : '' }}"
+                               onclick="event.preventDefault(); document.getElementById('down-vote-answer-{{$answer->id}}').submit();">
                                 <i class="fas fa-caret-down fa-3x"></i>
                             </a>
 
-                            @can('accept', $answer)
+                            <form id="down-vote-answer-{{$answer->id}}" action="/answers/{{ $answer->id }}/vote" method="POST" style="display:none;">
+                                @csrf
+                                <input type="hidden" name="vote" value="-1">
+                            </form>
+
+
+                        @can('accept', $answer)
                                 <a title="Mark this answer as best answer"
                                    class="{{ $answer->status }} mt-2"
                                    onclick="event.preventDefault(); document.getElementById('accept-answer-{{$answer->id}}').submit();">

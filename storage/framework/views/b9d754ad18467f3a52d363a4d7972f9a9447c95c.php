@@ -13,15 +13,32 @@
                     <div class="media">
 
                         <div class="d-flex flex-column vote-controls">
-                            <a title="This answer is useful">
+                            <a title="This answer is useful"
+                               class="vote-up <?php echo e(Auth::guest() ? 'off' : ''); ?>"
+                               onclick="event.preventDefault(); document.getElementById('up-vote-answer-<?php echo e($answer->id); ?>').submit();">
                                 <i class="fas fa-caret-up fa-3x"></i>
                             </a>
-                            <span class="votes-count"><?php echo e($answer->question->votes_count); ?></span>
-                            <a title="This answer is not useful">
+
+                            <form id="up-vote-answer-<?php echo e($answer->id); ?>" action="/answers/<?php echo e($answer->id); ?>/vote" method="POST" style="display:none;">
+                                <?php echo csrf_field(); ?>
+                                <input type="hidden" name="vote" value="1">
+                            </form>
+
+                            <span class="votes-count"><?php echo e($answer->votes_count); ?></span>
+
+                            <a title="This answer is not useful"
+                               class="vote-down <?php echo e(Auth::guest() ? 'off' : ''); ?>"
+                               onclick="event.preventDefault(); document.getElementById('down-vote-answer-<?php echo e($answer->id); ?>').submit();">
                                 <i class="fas fa-caret-down fa-3x"></i>
                             </a>
 
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('accept', $answer)): ?>
+                            <form id="down-vote-answer-<?php echo e($answer->id); ?>" action="/answers/<?php echo e($answer->id); ?>/vote" method="POST" style="display:none;">
+                                <?php echo csrf_field(); ?>
+                                <input type="hidden" name="vote" value="-1">
+                            </form>
+
+
+                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('accept', $answer)): ?>
                                 <a title="Mark this answer as best answer"
                                    class="<?php echo e($answer->status); ?> mt-2"
                                    onclick="event.preventDefault(); document.getElementById('accept-answer-<?php echo e($answer->id); ?>').submit();">

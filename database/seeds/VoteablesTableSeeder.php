@@ -1,5 +1,6 @@
 <?php
 
+use App\Answer;
 use App\Question;
 use App\User;
 use Illuminate\Database\Seeder;
@@ -14,7 +15,7 @@ class VoteablesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('voteables')->where('voteable_type', 'App\Question')->delete();
+        DB::table('voteables')->delete();
 
         $users = User::all();
         $numberOfUsers = $users->count();
@@ -25,6 +26,14 @@ class VoteablesTableSeeder extends Seeder
             for ($i = 0 ; $i < rand(1, $numberOfUsers); $i++){
                 $user = $users[$i];
                 $user->voteQuestion($question, $votes[rand(0,1)]);
+            }
+        }
+
+        foreach (Answer::all() as $answer){
+
+            for ($i = 0 ; $i < rand(1, $numberOfUsers); $i++){
+                $user = $users[$i];
+                $user->voteAnswer($answer, $votes[rand(0,1)]);
             }
         }
     }

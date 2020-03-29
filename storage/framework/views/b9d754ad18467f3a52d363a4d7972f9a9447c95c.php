@@ -16,7 +16,7 @@
                             <a title="This answer is useful">
                                 <i class="fas fa-caret-up fa-3x"></i>
                             </a>
-                            <span class="votes-count"><?php echo e($answer->question->votes); ?></span>
+                            <span class="votes-count"><?php echo e($answer->question->votes_count); ?></span>
                             <a title="This answer is not useful">
                                 <i class="fas fa-caret-down fa-3x"></i>
                             </a>
